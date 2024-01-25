@@ -40,6 +40,22 @@ class _TabsScreenState extends State<TabsScreen> {
     }
   }
 
+  void _setScreen(String identifier) {
+    if (identifier == 'meals') {
+      Navigator.pop(context);
+    } else if (identifier == 'Filters') {
+    } 
+    else if(identifier=='Favorites') {
+      // here it an issue to solve that when ever favorites clicked by drawer than screen got stack 
+      Navigator.of(context).push(MaterialPageRoute(
+          barrierDismissible: true,
+          
+          builder: (cxt) => MealsScreen(
+              meals: _favorites,
+              ontoggleFavorites: _toggleMealFavoritieStatus)));
+    }
+  }
+
   void _selectPage(int index) {
     setState(() {
       _selectedPageIndex = index;
@@ -65,7 +81,9 @@ class _TabsScreenState extends State<TabsScreen> {
       appBar: AppBar(
         title: Text(activePageTitle),
       ),
-      drawer:  MainDrawer(ontoggleFavorites: _toggleMealFavoritieStatus ),
+      drawer: MainDrawer(
+        onSelectScreen: _setScreen,
+      ),
       body: activePage,
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedPageIndex,
