@@ -43,7 +43,9 @@ class _TabsScreenState extends State<TabsScreen> {
   void _setScreen(String identifier) {
     if (identifier == 'meals') {
       Navigator.pop(context);
-    } else if (identifier == 'Filters') {
+      
+    } 
+    else if(identifier == 'Filters') {
     } 
     else if(identifier=='Favorites') {
       // here it an issue to solve that when ever favorites clicked by drawer than screen got stack 
