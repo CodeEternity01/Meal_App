@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meal_app/screens/categories.dart';
+import 'package:meal_app/screens/filter.dart';
 import 'package:meal_app/screens/meals.dart';
 import 'package:meal_app/model/meal.dart';
 import 'package:meal_app/widgets/main_drawer.dart';
@@ -43,15 +44,14 @@ class _TabsScreenState extends State<TabsScreen> {
   void _setScreen(String identifier) {
     if (identifier == 'meals') {
       Navigator.pop(context);
-      
-    } 
-    else if(identifier == 'Filters') {
-    } 
-    else if(identifier=='Favorites') {
-      // here it an issue to solve that when ever favorites clicked by drawer than screen got stack 
+    }
+     else if (identifier == 'Filters') {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (cxt) =>const FilterScreen()));
+    } else if (identifier == 'Favorites') {
+      // here it an issue to solve that when ever favorites clicked by drawer than screen got stack
       Navigator.of(context).push(MaterialPageRoute(
           barrierDismissible: true,
-          
           builder: (cxt) => MealsScreen(
               meals: _favorites,
               ontoggleFavorites: _toggleMealFavoritieStatus)));

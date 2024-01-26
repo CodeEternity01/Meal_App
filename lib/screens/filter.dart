@@ -38,7 +38,7 @@ class _FilterScreenState extends State<FilterScreen> {
                   .labelMedium!
                   .copyWith(color: Theme.of(context).colorScheme.onBackground),
             ),
-            activeColor: Theme.of(context).colorScheme.tertiary,
+              activeColor: Theme.of(context).colorScheme.tertiary,
             contentPadding: const EdgeInsets.only(left: 34, right: 24),
           )
         ],
