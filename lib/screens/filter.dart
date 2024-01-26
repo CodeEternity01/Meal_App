@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:meal_app/screens/tabs.dart';
+import 'package:meal_app/widgets/main_drawer.dart';
 
 class FilterScreen extends StatefulWidget {
   const FilterScreen({super.key});
@@ -15,6 +17,14 @@ class _FilterScreenState extends State<FilterScreen> {
       appBar: AppBar(
         title: const Text('Your Filters'),
       ),
+      // As if we usedrawer the back bottom disapear from filter so we are happy with back botton
+      // drawer: MainDrawer(onSelectScreen: ((identifier) {
+      //   Navigator.pop(context);
+      //   if (identifier == 'meals') {
+      //     // there is pushreplacemt also which changes the page 
+      //     Navigator.of(context).push(MaterialPageRoute(builder: ((context) =>const TabsScreen())));
+      //   }
+      // })),
       body: Column(
         children: [
           SwitchListTile(
@@ -38,7 +48,7 @@ class _FilterScreenState extends State<FilterScreen> {
                   .labelMedium!
                   .copyWith(color: Theme.of(context).colorScheme.onBackground),
             ),
-              activeColor: Theme.of(context).colorScheme.tertiary,
+            activeColor: Theme.of(context).colorScheme.tertiary,
             contentPadding: const EdgeInsets.only(left: 34, right: 24),
           )
         ],
