@@ -50,7 +50,7 @@ class _TabsScreenState extends State<TabsScreen> {
           .push(MaterialPageRoute(builder: (cxt) =>const FilterScreen()));
     } else if (identifier == 'Favorites') {
       // here it an issue to solve that when ever favorites clicked by drawer than screen got stack
-      Navigator.of(context).pushReplacement(MaterialPageRoute(
+      Navigator.of(context).push(MaterialPageRoute(
           barrierDismissible: true,
           builder: (cxt) => MealsScreen(
               meals: _favorites,
