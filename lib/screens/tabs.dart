@@ -18,6 +18,12 @@ class _TabsScreenState extends State<TabsScreen> {
   int _selectedPageIndex = 0;
 
   final List<Meal> _favorites = [];
+   Map<Filter, bool> _selectedFilter={
+    Filter.glutenFree=false,
+    Filter.lactoseFree=false,
+    Filter.vegan=false,
+    Filter.vegetarian=false,
+  }
 
   void _showInfoMessage(String message) {
     ScaffoldMessenger.of(context).clearSnackBars();
@@ -41,13 +47,16 @@ class _TabsScreenState extends State<TabsScreen> {
     }
   }
 
-  void _setScreen(String identifier) {
-    
-      Navigator.pop(context);
-    
-     if (identifier == 'Filters') {
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (cxt) =>const FilterScreen()));
+  void _setScreen(String identifier) async {
+    Navigator.pop(context);
+
+    if (identifier == 'Filters') {
+      final result = await Navigator.of(context).push<Map<Filter, bool>>(
+          MaterialPageRoute(builder: (cxt) => const FilterScreen()));
+          setState(() {
+            _selectedFilter=result??;
+          });
+     
     } else if (identifier == 'Favorites') {
       // here it an issue to solve that when ever favorites clicked by drawer than screen got stack
       Navigator.of(context).push(MaterialPageRoute(
