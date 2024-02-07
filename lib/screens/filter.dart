@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meal_app/screens/tabs.dart';
-import 'package:meal_app/widgets/main_drawer.dart';
+
 
 class FilterScreen extends StatefulWidget {
   const FilterScreen({super.key});
