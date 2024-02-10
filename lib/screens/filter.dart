@@ -23,6 +23,8 @@ class _FilterScreenState extends State<FilterScreen> {
   var _vegitarianFreeFliterSet = false;
 
   @override
+  // The initstate subroutine returns a pointer to the previous state information array.
+  // Once a state has been initialized, the setstate subroutine allows rapid switching between states.
   void initState() {
     super.initState();
     _gluteenFreeFliterSet = widget.currentFilter[Filter.glutenFree]!;
