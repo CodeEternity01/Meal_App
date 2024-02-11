@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:meal_app/data/dummy_data.dart';
 import 'package:meal_app/screens/categories.dart';
 import 'package:meal_app/screens/filter.dart';
 import 'package:meal_app/screens/meals.dart';
@@ -23,6 +22,8 @@ class TabsScreen extends ConsumerStatefulWidget {
     return _TabsScreenState();
   }
 }
+
+
 
 class _TabsScreenState extends ConsumerState<TabsScreen> {
   int _selectedPageIndex = 0;
