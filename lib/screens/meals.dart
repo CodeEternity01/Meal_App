@@ -9,16 +9,14 @@ class MealsScreen extends StatelessWidget {
     super.key,
     this.title,
     required this.meals,
-    required this.ontoggleFavorites
   });
 
-    final void Function(Meal meals) ontoggleFavorites;
   final String? title;
   final List<Meal> meals;
   void selectMeal(BuildContext context, Meal meal) {
     // Navigator.pop(context); this when to delete a screen whan a botton is press
     Navigator.of(context).push(
-        MaterialPageRoute(builder: (ctx) => MealDetailScreen(meals: meal ,ontoggleFavorites: ontoggleFavorites)));
+        MaterialPageRoute(builder: (ctx) => MealDetailScreen(meals: meal)));
   }
 
   @override

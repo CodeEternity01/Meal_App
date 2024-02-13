@@ -5,10 +5,10 @@ import 'package:meal_app/screens/meals.dart';
 
 class MealDetailScreen extends StatelessWidget {
   const MealDetailScreen(
-      {super.key, required this.meals, required this.ontoggleFavorites});
+      {super.key, required this.meals});
 
   final Meal meals;
-  final void Function(Meal meals) ontoggleFavorites;
+ 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
