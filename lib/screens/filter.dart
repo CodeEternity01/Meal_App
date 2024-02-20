@@ -2,33 +2,33 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meal_app/provider/filters_provider.dart';
 
-class FilterScreen extends ConsumerStatefulWidget {
+class FilterScreen extends ConsumerWidget {
   const FilterScreen({super.key});
 
-  @override
-  ConsumerState<FilterScreen> createState() => _FilterScreenState();
-}
+//   @override
+//   ConsumerState<FilterScreen> createState() => _FilterScreenState();
+// }
 
-class _FilterScreenState extends ConsumerState<FilterScreen> {
-  var _gluteenFreeFliterSet = false;
-  var _veganFilterSet = false;
-  var _lactosFreeFliterSet = false;
-  var _vegitarianFreeFliterSet = false;
+// class _FilterScreenState extends ConsumerState<FilterScreen> {
+//   var _gluteenFreeFliterSet = false;
+//   var _veganFilterSet = false;
+//   var _lactosFreeFliterSet = false;
+//   var _vegitarianFreeFliterSet = false;
+
+//   @override
+//   // The initstate subroutine returns a pointer to the previous state information array.
+//   // Once a state has been initialized, the setstate subroutine allows rapid switching between states.
+//   void initState() {
+//     super.initState();
+//     final activeFilter = ref.read(filterProvider);
+//     _gluteenFreeFliterSet = activeFilter[Filter.glutenFree]!;
+//     _veganFilterSet = activeFilter[Filter.vegan]!;
+//     _lactosFreeFliterSet = activeFilter[Filter.lactoseFree]!;
+//     _vegitarianFreeFliterSet = activeFilter[Filter.vegetarian]!;
+//   }
 
   @override
-  // The initstate subroutine returns a pointer to the previous state information array.
-  // Once a state has been initialized, the setstate subroutine allows rapid switching between states.
-  void initState() {
-    super.initState();
-    final activeFilter = ref.read(filterProvider);
-    _gluteenFreeFliterSet = activeFilter[Filter.glutenFree]!;
-    _veganFilterSet = activeFilter[Filter.vegan]!;
-    _lactosFreeFliterSet = activeFilter[Filter.lactoseFree]!;
-    _vegitarianFreeFliterSet = activeFilter[Filter.vegetarian]!;
-  }
-
-  @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context,Widget ref) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Your Filters'),
@@ -41,20 +41,7 @@ class _FilterScreenState extends ConsumerState<FilterScreen> {
       //     Navigator.of(context).push(MaterialPageRoute(builder: ((context) =>const TabsScreen())));
       //   }
       // })),
-      body: PopScope(
-        canPop: false,
-        onPopInvoked: (bool didPop) {
-          if (didPop) return;
-          ref.read(filterProvider.notifier).setFilters({
-            Filter.glutenFree: _gluteenFreeFliterSet,
-            Filter.lactoseFree: _lactosFreeFliterSet,
-            Filter.vegetarian: _vegitarianFreeFliterSet,
-            Filter.vegan: _veganFilterSet,
-          });
-          Navigator.of(context).pop();
-          
-        },
-        child: Column(
+      body: Column(
           children: [
             SwitchListTile(
               value: _gluteenFreeFliterSet,
@@ -138,7 +125,6 @@ class _FilterScreenState extends ConsumerState<FilterScreen> {
             )
           ],
         ),
-      ),
     );
   }
 }
