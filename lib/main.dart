@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:meal_app/screens/categories.dart';
 import 'package:meal_app/screens/tabs.dart';
 import 'package:riverpod/riverpod.dart';
 

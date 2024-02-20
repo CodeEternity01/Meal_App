@@ -3,10 +3,10 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:meal_app/screens/categories.dart';
 import 'package:meal_app/screens/filter.dart';
 import 'package:meal_app/screens/meals.dart';
-import 'package:meal_app/model/meal.dart';
 import 'package:meal_app/widgets/main_drawer.dart';
 import 'package:meal_app/provider/meals_provider.dart';
 import 'package:meal_app/provider/favorites_provider.dart';
+import 'package:meal_app/provider/filters_provider.dart';
 
 const kInitialFilter = {
   Filter.glutenFree: false,
@@ -27,36 +27,20 @@ class TabsScreen extends ConsumerStatefulWidget {
 class _TabsScreenState extends ConsumerState<TabsScreen> {
   int _selectedPageIndex = 0;
 
- 
-  Map<Filter, bool> _selectedFilter = kInitialFilter;
-
-  void _showInfoMessage(String message) {
-    ScaffoldMessenger.of(context).clearSnackBars();
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text(message)));
-  }
-
   void _setScreen(String identifier) async {
     Navigator.pop(context);
 
     if (identifier == 'Filters') {
-      final result =
-          await Navigator.of(context).push<Map<Filter, bool>>(MaterialPageRoute(
-              builder: (cxt) => FilterScreen(
-                    currentFilter: _selectedFilter,
-                  )));
-      setState(() {
-        _selectedFilter = result ?? kInitialFilter;
-      });
+      await Navigator.of(context).push<Map<Filter, bool>>(
+          MaterialPageRoute(builder: (cxt) => const FilterScreen()));
     } else if (identifier == 'Favorites') {
       // here it an issue to solve that when ever favorites clicked by drawer than screen got stack
       final favoritesMeals = ref.watch(favoriteMealProvider);
       Navigator.of(context).push(MaterialPageRoute(
           barrierDismissible: true,
-  
           builder: (cxt) => MealsScreen(
-              meals: favoritesMeals,
-          )));
+                meals: favoritesMeals,
+              )));
     }
   }
 
@@ -69,17 +53,18 @@ class _TabsScreenState extends ConsumerState<TabsScreen> {
   @override
   Widget build(BuildContext context) {
     final meals = ref.watch(mealsProvider);
+    final activeFilter = ref.watch(filterProvider);
     final availableM = meals.where((meal) {
-      if (_selectedFilter[Filter.glutenFree]! && !meal.isGlutenFree) {
+      if (activeFilter[Filter.glutenFree]! && !meal.isGlutenFree) {
         return false;
       }
-      if (_selectedFilter[Filter.lactoseFree]! && !meal.isLactoseFree) {
+      if (activeFilter[Filter.lactoseFree]! && !meal.isLactoseFree) {
         return false;
       }
-      if (_selectedFilter[Filter.vegan]! && !meal.isVegan) {
+      if (activeFilter[Filter.vegan]! && !meal.isVegan) {
         return false;
       }
-      if (_selectedFilter[Filter.vegetarian]! && !meal.isVegetarian) {
+      if (activeFilter[Filter.vegetarian]! && !meal.isVegetarian) {
         return false;
       }
       return true;

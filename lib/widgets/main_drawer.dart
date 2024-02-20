@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:meal_app/screens/categories.dart';
-import 'package:meal_app/model/meal.dart';
 
 class MainDrawer extends StatelessWidget {
   const MainDrawer({super.key, required this.onSelectScreen});
