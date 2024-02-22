@@ -31,7 +31,7 @@ class MealDetailScreen extends ConsumerWidget {
         ],
       ),
       body: SingleChildScrollView(
-        // In list view the aligment is not cnetered whereasin singlechildschollview have all dafault center aligment
+        // In list view the aligment is not cnetered whereasin singlechildschollview have all dafault center aligent
         child: Column(
           children: [
             Image.network(meals.imageUrl,
