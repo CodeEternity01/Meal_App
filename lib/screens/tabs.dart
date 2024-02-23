@@ -4,7 +4,6 @@ import 'package:meal_app/screens/categories.dart';
 import 'package:meal_app/screens/filter.dart';
 import 'package:meal_app/screens/meals.dart';
 import 'package:meal_app/widgets/main_drawer.dart';
-import 'package:meal_app/provider/meals_provider.dart';
 import 'package:meal_app/provider/favorites_provider.dart';
 import 'package:meal_app/provider/filters_provider.dart';
 
