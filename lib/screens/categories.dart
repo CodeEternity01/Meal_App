@@ -28,6 +28,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
       lowerBound: 0,
       upperBound: 1,
     );
+    _animationController.forward();
   }
 
   @override
@@ -70,6 +71,11 @@ class _CategoriesScreenState extends State<CategoriesScreen>
           )
       ],
     ),
-     builder: (context, child)=> Padding(padding: EdgeInsets.only(top: _animationController.value*100).));
+     builder: (context, child)=> SlideTransition(
+      position: _animationController.drive(
+        Tween(
+         begin:const Offset(0, 0.3),
+         end:const Offset(0, 0)
+      ) ),child: child,));
   }
 }
