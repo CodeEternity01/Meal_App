@@ -50,7 +50,8 @@ class _CategoriesScreenState extends State<CategoriesScreen>
 
   @override
   Widget build(BuildContext context) {
-    return GridView(
+    return AnimatedBuilder(animation: _animationController,
+    child: GridView(
       padding: const EdgeInsets.all(10),
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -59,7 +60,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
         mainAxisSpacing: 20,
       ),
       children: [
-        // availableCategories.map((category) => CategoryGridItem(category: category)).toList()
+        // availableCategories.map((category) => CategoryGridItem(category: category)).toList(
         for (final category in availableCategories)
           CategoryGridItem(
             category: category,
@@ -68,6 +69,7 @@ class _CategoriesScreenState extends State<CategoriesScreen>
             },
           )
       ],
-    );
+    ),
+     builder: (context, child)=> Padding(padding: EdgeInsetsGeometry.));
   }
 }
