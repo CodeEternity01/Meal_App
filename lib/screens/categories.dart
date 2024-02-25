@@ -70,6 +70,6 @@ class _CategoriesScreenState extends State<CategoriesScreen>
           )
       ],
     ),
-     builder: (context, child)=> Padding(padding: EdgeInsetsGeometry.));
+     builder: (context, child)=> Padding(padding: EdgeInsets.only(top: _animationController.value*100).));
   }
 }
