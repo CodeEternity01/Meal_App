@@ -30,9 +30,12 @@ class MealDetailScreen extends ConsumerWidget {
               icon: AnimatedSwitcher(
                 duration: const Duration(milliseconds: 300),
                 transitionBuilder: (child, animation) {
-                  return RotationTransition(turns: animation,child: child,);
+                  return RotationTransition(
+                    turns: Tween(begin: 0.9,end: 1.0).animate(animation),
+                    child: child,);
                 },
-                child: Icon(isFavorites ? Icons.star : Icons.star_border),
+                child: Icon(isFavorites ? Icons.star : Icons.star_border,
+                key: ValueKey(isFavorites),),
               ))
         ],
       ),
@@ -40,8 +43,11 @@ class MealDetailScreen extends ConsumerWidget {
         // In list view the aligment is not cnetered whereasin singlechildschollview have all dafault center aligent
         child: Column(
           children: [
-            Image.network(meals.imageUrl,
-                width: double.infinity, height: 300, fit: BoxFit.cover),
+            Hero(
+              tag: meals.id,
+              child: Image.network(meals.imageUrl,
+                  width: double.infinity, height: 300, fit: BoxFit.cover),
+            ),
             const SizedBox(
               height: 14,
             ),
